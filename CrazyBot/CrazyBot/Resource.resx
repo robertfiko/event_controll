@@ -118,13 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="basic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\basic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cannot_wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\cobble.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="basicText" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\basicText.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Magnet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Magnet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="basicTexture" xml:space="preserve">
-    <value />
+  <data name="no_wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\stone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="robochase" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\robochase.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="robot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\skeleton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\brick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

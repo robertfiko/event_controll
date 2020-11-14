@@ -13,4 +13,4 @@ C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.dll
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.pdb
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.genruntimeconfig.cache
-C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.Resource1.resources
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.Resource.resources

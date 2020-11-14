@@ -17,13 +17,14 @@ namespace CrazyBot
         public event EventHandler<FieldRefreshEventArgs> refreshField;
         public event EventHandler<EventArgs> refreshTime;
         public event EventHandler<EventArgs> OnGameOver;
+        public event EventHandler<EventArgs> displayPaused;
 
 
         public CrazyBotModel()
         {
             gameInfo = null;
             magnetPos = -1;
-            timer = new System.Timers.Timer(800);
+            timer = new System.Timers.Timer(1000);
 
             timer.Elapsed += new ElapsedEventHandler(AdvanceTime);
         }
@@ -125,19 +126,29 @@ namespace CrazyBot
             
         }
 
+        internal void pause()
+        {
+            timer.Stop();  
+        }
+
+        internal void play()
+        {
+            timer.Start();
+        }
+
         internal void loadFromFile(string filePath)
         {
             
         }
 
-        /*
+        
         internal void saveToFile(string pathToSave)
-        {
+        {/*
             if (gameInfo == null)
                 throw new InvalidOperationException("No data access is provided.");
 
-            gameInfo.SaveAsync(path, _table);
-        }*/
+            gameInfo.SaveAsync(path, _table);*/
+        }
 
         private void destructWall(int i, int j)
         {
@@ -171,7 +182,6 @@ namespace CrazyBot
             if (isInGame())
             {
                 gameInfo.time = gameInfo.time + 1;
-                //sendRefreshTime();
             }
 
         }
@@ -258,6 +268,11 @@ namespace CrazyBot
         private void DOgameOver()
         {
             OnGameOver?.Invoke(this, new EventArgs());
+        }
+
+        private void DOdisplayPaused()
+        {
+            displayPaused?.Invoke(this, new EventArgs());
         }
 
         #endregion

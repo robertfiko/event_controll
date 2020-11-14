@@ -78,6 +78,9 @@ namespace CrazyBot
 
 
 
+
+
+
         #region New Game Event Handlers & New Game Method & Button Styler
         public void onSevenClicked(object obj, EventArgs e)
         {
@@ -99,16 +102,31 @@ namespace CrazyBot
 
         public void onPlay(object obj, EventArgs e)
         {
-            MessageBox.Show("Play");
+            foreach (var btn in buttons)
+            {
+                btn.Enabled = true;
+            }
+            model.play();
+            play.Enabled = false;
+            pause.Enabled = true;
+            save.Enabled = false;
+            load.Enabled = false;
         }
 
         public void onPause(object obj, EventArgs e)
         {
-            MessageBox.Show("Pause");
             foreach (var btn in buttons)
             {
                 btn.Enabled = false;
             }
+            model.pause();
+            play.Enabled = true;
+            pause.Enabled = false;
+            setStatusBarPaused();
+            MessageBox.Show("Game is paused!\nTo continue, use the Game Menu or press Ctrl + Alt + Space!");
+
+
+            
         }
 
         public void onSave(object obj, EventArgs e)
@@ -161,7 +179,11 @@ namespace CrazyBot
         {
             TimeElapsed(this, new EventArgs());
             boardGrid.Visible = true;
+
             pause.Enabled = true;
+            play.Enabled = false;
+            save.Enabled = false;
+            load.Enabled = true;
         }
 
         private GridButton GridButtonStyler(GridButton btn)
@@ -278,7 +300,7 @@ namespace CrazyBot
                     btn.Enabled = false;
                 }
                 boardGrid.Visible = false;
-                MessageBox.Show("Nyertél!");
+                MessageBox.Show("Congrats! You win this game in: " + TimeSpan.FromSeconds(model.getTime()).ToString("mm':'ss"));
                 
             }
 
@@ -322,7 +344,7 @@ namespace CrazyBot
 
         #endregion
 
-        #region Game action handler :: gridButtonClicked, timeElapsed
+        #region Game action handler :: gridButtonClicked, timeElapsed, statusBar updated
         public void gridButtonClicked(object obj, EventArgs e)
         {
             model.invertWall((obj as GridButton).getPosition());
@@ -332,7 +354,27 @@ namespace CrazyBot
             
             void update()
             {
-                statusBar.Text = "Eltelt idő: " + model.getTime();
+                statusBar.Text = "Time passed: " + TimeSpan.FromSeconds(model.getTime()).ToString("mm':'ss");
+            }
+
+            if (boardGrid.InvokeRequired)
+            {
+                boardGrid.Invoke(new MethodInvoker(delegate
+                {
+                    update();
+                }));
+            }
+            else
+            {
+                update();
+            }
+        }
+
+        private void setStatusBarPaused()
+        {
+            void update()
+            {
+                statusBar.Text += " | Game is PAUSED";
             }
 
             if (boardGrid.InvokeRequired)
@@ -352,6 +394,6 @@ namespace CrazyBot
 
         #endregion
 
-       
+
     }
 }

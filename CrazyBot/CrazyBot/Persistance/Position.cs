@@ -12,8 +12,6 @@ namespace CrazyBot.Persistance
             Y = y;
         }
 
-        
-
         public override bool Equals(Object other)
         {
             if ((other == null) || !this.GetType().Equals(other.GetType()))

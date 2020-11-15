@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Timers;
-using System.Windows.Forms;
 
 using CrazyBot.Persistance;
 
@@ -13,7 +10,6 @@ namespace CrazyBot.Model
         private CrazyBotInfo gameInfo;
         private int magnetPos;
         private System.Timers.Timer timer;
-        private int time;
         private CrazyBotFileDataAccess persistance;
 
         public event EventHandler<EventArgs> refreshBoard;
@@ -21,7 +17,6 @@ namespace CrazyBot.Model
         public event EventHandler<EventArgs> refreshTime;
         public event EventHandler<EventArgs> OnGameOver;
         public event EventHandler<EventArgs> displayPaused;
-
 
         public CrazyBotModel()
         {
@@ -53,7 +48,7 @@ namespace CrazyBot.Model
         }
         public int getTime()
         {
-            return time;
+            return (int)gameInfo.time;
         }
         public FieldType[,] getBoard()
         {
@@ -66,6 +61,44 @@ namespace CrazyBot.Model
 
         #endregion
 
+        #region Robot Handlers :: direction, step, move, destructwall, invertwall
+
+        internal void invertWall(Position p)
+        {
+            if (getRobotPos().Equals(p)) return;
+            if (getMagnetPos().Equals(p)) return;
+            if (getBoard()[p.X, p.Y] == FieldType.NO_WALL)
+            {
+                getBoard()[p.X, p.Y] = FieldType.WALL;
+                DORefreshField(p);
+            }
+        }
+        private void moveRobot(object obj, EventArgs e)
+        {
+            if (isInGame())
+            {
+                //Robot pick-up
+                Position prevPostionOfRobot = new Position(gameInfo.robot.X, gameInfo.robot.Y);
+                FieldType robotPrev = gameInfo.fieldTypeOnRobot;
+                getBoard()[prevPostionOfRobot.X, prevPostionOfRobot.Y] = robotPrev;
+
+
+                //Robot put-down
+                oneStepRobot();
+                DORefreshField(prevPostionOfRobot);
+                if (getBoard()[gameInfo.robot.X, gameInfo.robot.Y] == FieldType.MAGNET)
+                {
+                    gameOver();
+                }
+                else
+                {
+                    gameInfo.fieldTypeOnRobot = getBoard()[gameInfo.robot.X, gameInfo.robot.Y];
+                    //getBoard()[gameInfo.robot.X, gameInfo.robot.Y] = FieldType.ROBOT;
+                    DORefreshField(gameInfo.robot);
+                }
+
+            }
+        }
         private RobotDirection randomiseDirection(RobotDirection except)
         {
 
@@ -77,11 +110,10 @@ namespace CrazyBot.Model
             }
             return r;
         }
-
         private Position oneStepRobot()
         {
             RobotDirection rdir = gameInfo.robotDir;
-            
+
             Position roboAlgo(int x, int y)
             {
                 //Check wheter it would get off from the table
@@ -91,7 +123,7 @@ namespace CrazyBot.Model
                     if (getBoard()[gameInfo.robot.X + x, gameInfo.robot.Y + y] == FieldType.WALL)
                     {
                         destructWall(x, y);
-                        
+
                         return oneStepRobot();
                     }
                     else
@@ -104,7 +136,7 @@ namespace CrazyBot.Model
                 {
                     gameInfo.robotDir = randomiseDirection(gameInfo.robotDir);
                     return oneStepRobot();
-                   
+
                 }
                 return new Position(gameInfo.robot.X + x, gameInfo.robot.Y + y);
             }
@@ -125,10 +157,22 @@ namespace CrazyBot.Model
             {
                 return roboAlgo(1, 0);
             }
-            return new Position(0,0);
+            return new Position(0, 0);
 
-            
+
         }
+        private void destructWall(int i, int j)
+        {
+            getBoard()[gameInfo.robot.X + i, gameInfo.robot.Y + j] = FieldType.CANNOT_WALL;
+            DORefreshField(new Position(gameInfo.robot.X + i, gameInfo.robot.Y + j));
+            gameInfo.robotDir = randomiseDirection(gameInfo.robotDir);
+
+        }
+
+
+        #endregion
+
+        #region Game Management :: play, pause, gameOver, newGame, advanceTime
 
         internal void pause()
         {
@@ -140,125 +184,80 @@ namespace CrazyBot.Model
             timer.Start();
         }
 
-        
-
-       
-
-        private void destructWall(int i, int j)
-        {
-            getBoard()[gameInfo.robot.X+i, gameInfo.robot.Y+j] = FieldType.CANNOT_WALL;
-            DORefreshField(new Position(gameInfo.robot.X + i, gameInfo.robot.Y + j));
-            gameInfo.robotDir = randomiseDirection(gameInfo.robotDir);
-            
-        }
-
-        public void newGame(int size)
-        {
-            var rand = new Random();
-
-            magnetPos = size / 2;
-
-            int x = rand.Next(size);
-            while (x == magnetPos) x = rand.Next(size);
-            int y = rand.Next(size);
-            while (y == magnetPos) y = rand.Next(size);
-
-            gameInfo = new CrazyBotInfo(size, new Position(x, y), 0, RobotDirection.UP, FieldType.NO_WALL, rand.Next(16));
-            DORefreshBoard();
-
-            time = 0;
-            timer.Start();
-
-
-        }
-        private void onElapsed(object obj, EventArgs e)
-        {
-            if (isInGame())
-            {
-                gameInfo.time = gameInfo.time + 1;
-            }
-
-        }
-
-        private void moveRobot(object obj, EventArgs e)
-        {
-            if (isInGame())
-            {
-                //Robot pick-up
-                Position prevPostionOfRobot = gameInfo.robot;
-                FieldType robotPrev = gameInfo.fieldTypeOnRobot;
-                getBoard()[prevPostionOfRobot.X, prevPostionOfRobot.Y] = robotPrev;
-                DORefreshField(prevPostionOfRobot);
-
-                //Robot put-down
-                oneStepRobot();
-                if (getBoard()[gameInfo.robot.X, gameInfo.robot.Y] == FieldType.MAGNET)
-                { 
-                    gameOver();
-                }
-                else 
-                {
-                    gameInfo.fieldTypeOnRobot = getBoard()[gameInfo.robot.X, gameInfo.robot.Y];
-                    getBoard()[gameInfo.robot.X, gameInfo.robot.Y] = FieldType.ROBOT;
-                    DORefreshField(gameInfo.robot);
-                }
-                
-            }
-        }
-
         private void gameOver()
         {
             timer.Stop();
             DOgameOver();
         }
 
+        internal void newGame(int size, CrazyBotInfo gameInfoTOImport = null)
+        {
+            var rand = new Random();
+
+            magnetPos = size / 2;
+
+
+
+            if (gameInfoTOImport == null)
+            {
+                int x = rand.Next(size);
+                while (x == magnetPos) x = rand.Next(size);
+                int y = rand.Next(size);
+                while (y == magnetPos) y = rand.Next(size);
+                gameInfo = new CrazyBotInfo(size, new Position(x, y), 0, RobotDirection.UP, FieldType.NO_WALL, rand.Next(16));
+            }
+            else
+            {
+                gameInfo = gameInfoTOImport;
+            }
+
+            DORefreshBoard();
+
+            timer.Start();
+
+
+        }
+
         internal void AdvanceTime(object obj, EventArgs e)
         {
             //Advancing time
-            time++;
+            gameInfo.time++;
             DORefreshTime();
 
             //Moveing robot
-            if (time > 1)
-            moveRobot(this, new EventArgs());
+            if (gameInfo.time > 1)
+                moveRobot(this, new EventArgs());
 
             //Make robot even crazier
             gameInfo.timeLeftUntilCrazy--;
             if (gameInfo.timeLeftUntilCrazy == 0)
             {
                 gameInfo.robotDir = randomiseDirection(gameInfo.robotDir);
-                gameInfo.timeLeftUntilCrazy = (new Random()).Next(16); 
+                gameInfo.timeLeftUntilCrazy = (new Random()).Next(16);
 
             }
         }
 
-        public void invertWall(Position p)
-        {
-            if (getRobotPos().Equals(p)) return;
-            if (getMagnetPos().Equals(p)) return;
-            if (getBoard()[p.X, p.Y] == FieldType.NO_WALL)
-            {
-                getBoard()[p.X, p.Y] = FieldType.WALL;
-                DORefreshField(p);
-            }
-        }
+        #endregion
 
+        #region Save & Load
 
         internal async void saveGame(string path)
         {
-            
+
             if (gameInfo == null)
                 throw new InvalidOperationException("No data access is provided.");
 
             await persistance.SaveAsync(path, gameInfo);
         }
 
-        internal void loadFromFile(string filePath)
+        internal void loadFromFile(string path)
         {
-
+            CrazyBotInfo info = persistance.LoadAsync(path).Result;
+            newGame(info.size, info);
+            pause();
         }
-
-
+        #endregion
 
         #region Event SEND-ers aka. DO
         private void DORefreshBoard()

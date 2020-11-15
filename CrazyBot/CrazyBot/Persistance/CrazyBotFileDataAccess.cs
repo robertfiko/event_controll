@@ -11,53 +11,50 @@ namespace CrazyBot.Persistance
     {
         public async Task<CrazyBotInfo> LoadAsync(String path)
         {
-            /*
             try
 
             {
                 using (StreamReader reader = new StreamReader(path)) // fájl megnyitása
                 {
-                    String line = await reader.ReadLineAsync();
-                    String[] numbers = line.Split(' '); 
-                    Int32 tableSize = Int32.Parse(numbers[0]); // beolvassuk a tábla méretét
-                    Int32 regionSize = Int32.Parse(numbers[1]); // beolvassuk a házak méretét
-                    SudokuTable table = new SudokuTable(tableSize, regionSize); // létrehozzuk a táblát
+                    
+                    String line = reader.ReadLineAsync().Result;
+                    int size = Int32.Parse(line);
 
-                    for (Int32 i = 0; i < tableSize; i++)
+                    line = reader.ReadLineAsync().Result;
+                    Position RobotPozition = new Position(Int32.Parse(line.Split(" ")[0]), Int32.Parse(line.Split(" ")[1]));
+
+                    line = reader.ReadLineAsync().Result;
+                    RobotDirection RobotDir = (RobotDirection)(Int32.Parse(line));
+
+                    line = reader.ReadLineAsync().Result;
+                    FieldType fieldTypeOnRobot = (FieldType)Int32.Parse(line);
+
+                    line = reader.ReadLineAsync().Result;
+                    ulong time = Convert.ToUInt64(line);
+
+                    line = reader.ReadLineAsync().Result;
+                    int crazyTime = Int32.Parse(line);
+
+                    CrazyBotInfo table = new CrazyBotInfo(size, RobotPozition, time, RobotDir, fieldTypeOnRobot, crazyTime);
+
+                    for (Int32 i = 0; i < size; i++)
                     {
-                        line = await reader.ReadLineAsync();
-                        numbers = line.Split(' ');
+                        line = reader.ReadLineAsync().Result;
+                        var numbers = line.Split(' ');
 
-                        for (Int32 j = 0; j < tableSize; j++)
+                        for (Int32 j = 0; j < size; j++)
                         {
-                            table.SetValue(i, j, Int32.Parse(numbers[j]), false);
+                            table.board[i, j] = (FieldType)(Int32.Parse(numbers[j]));
                         }
                     }
-
-                    for (Int32 i = 0; i < tableSize; i++)
-                    {
-                        line = await reader.ReadLineAsync();
-                        String[] locks = line.Split(' ');
-
-                        for (Int32 j = 0; j < tableSize; j++)
-                        {
-                            if (locks[j] == "1")
-                            {
-                                table.SetLock(i, j);
-                            }
-                        }
-                    }
-
                     return table;
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw new SudokuDataException();
-            }*/
-            return null;
+                throw new InvalidOperationException();
+            }
         }
-
 
         public async Task SaveAsync(String path, CrazyBotInfo gameInfo)
         {
@@ -76,7 +73,7 @@ namespace CrazyBot.Persistance
                     {
                         for (Int32 j = 0; j < gameInfo.size; j++)
                         {
-                            await writer.WriteAsync(gameInfo.board[i, j] + " "); // kiírjuk az értékeket
+                            await writer.WriteAsync((int)gameInfo.board[i, j] + " "); // kiírjuk az értékeket
                         }
                         await writer.WriteLineAsync();
                     }

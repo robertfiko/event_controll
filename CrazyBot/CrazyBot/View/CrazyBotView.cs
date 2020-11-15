@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 using CrazyBot.Model;
 using CrazyBot.Persistance;
+using System.Threading.Tasks;
 
 namespace CrazyBot.View
 {
@@ -25,8 +26,6 @@ namespace CrazyBot.View
 
 
         #endregion
-
-
 
         public CrazyBotView()
         {
@@ -69,14 +68,6 @@ namespace CrazyBot.View
 
 
         }
-
-
-
-
-
-
-
-
 
         #region New Game Event Handlers & New Game Method & Button Styler
         public void onSevenClicked(object obj, EventArgs e)
@@ -180,8 +171,16 @@ namespace CrazyBot.View
             }
             
 
-            MessageBox.Show("File Content at path: " + filePath);
             model.loadFromFile(filePath);
+            model.loadFromFile(filePath);
+            boardGrid.Visible = true;
+
+            pause.Enabled = false;
+            play.Enabled = true;
+            save.Enabled = false;
+            load.Enabled = false;
+
+            statusBar.Text = "Game has loaded. Press play to continue";
 
         }
 
@@ -203,9 +202,9 @@ namespace CrazyBot.View
 
             buttons[x, y].Text = "";
             if (model.getBoard()[x, y] == FieldType.NO_WALL)        buttons[x, y].BackgroundImage = noWallTexture;
-            if (model.getBoard()[x, y] == FieldType.WALL)           buttons[x, y].BackgroundImage = WallTexture;
-            if (model.getBoard()[x, y] == FieldType.CANNOT_WALL)    buttons[x, y].BackgroundImage = cannotWallTexture;
-            if (model.getBoard()[x, y] == FieldType.MAGNET)
+            else if (model.getBoard()[x, y] == FieldType.WALL)           buttons[x, y].BackgroundImage = WallTexture;
+            else if (model.getBoard()[x, y] == FieldType.CANNOT_WALL)    buttons[x, y].BackgroundImage = cannotWallTexture;
+            else if (model.getBoard()[x, y] == FieldType.MAGNET)
             {
                 Image imageBackground = noWallTexture;
                 int size = Convert.ToInt32(imageBackground.Width * 0.8);
@@ -220,7 +219,9 @@ namespace CrazyBot.View
 
                 btn.BackgroundImage = img;
             }
-            if (model.getBoard()[x, y] == FieldType.ROBOT)
+
+
+            if (model.getRobotPos().Equals(new Position(x,y)))
             {
                 Image imageBackground = (model.getFieldTypeOnRobot() == FieldType.NO_WALL) ? noWallTexture : cannotWallTexture;
                 int size = Convert.ToInt32(imageBackground.Width * 0.8);
@@ -264,6 +265,7 @@ namespace CrazyBot.View
             boardGrid.ColumnCount = model.getSize();
             for (int i = 0; i < model.getSize(); i++)
             {
+                
                 for (int j = 0; j < model.getSize(); j++)
                 {
                     buttons[i, j] = new GridButton(i, j);
@@ -303,7 +305,14 @@ namespace CrazyBot.View
                 }
                 boardGrid.Visible = false;
                 MessageBox.Show("Congrats! You win this game in: " + TimeSpan.FromSeconds(model.getTime()).ToString("mm':'ss"));
-                
+                statusBar.Text = "No game is in progress";
+
+                pause.Enabled = false;
+                play.Enabled = false;
+                save.Enabled = false;
+                load.Enabled = true;
+
+
             }
 
             if (boardGrid.InvokeRequired)
@@ -358,7 +367,7 @@ namespace CrazyBot.View
             {
                 statusBar.Text = "Time passed: " + TimeSpan.FromSeconds(model.getTime()).ToString("mm':'ss");
             }
-
+            
             if (boardGrid.InvokeRequired)
             {
                 boardGrid.Invoke(new MethodInvoker(delegate

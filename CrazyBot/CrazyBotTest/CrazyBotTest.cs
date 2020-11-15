@@ -5,7 +5,12 @@ namespace CrazyBotTest
     [TestClass]
     public class CrazyBotTest
     {
-        [TestMethod]
+        [TestInitialize]
+        public void Initialize()
+        { 
+        }
+
+            [TestMethod]
         public void TestMethod1()
         {
         }

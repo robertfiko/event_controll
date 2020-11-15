@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CrazyBot
+namespace CrazyBot.Persistance
 {
     enum FieldType { NO_WALL = 0, WALL = 1, CANNOT_WALL = 2, ROBOT = 3, MAGNET = 4 }
     enum RobotDirection { UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 }
@@ -12,7 +12,7 @@ namespace CrazyBot
         public FieldType[,] board { get; set; }
         public Position robot { get; set; }
         public RobotDirection robotDir { get; set; }
-        public FieldType fieldTypeOnRobot;
+        public FieldType fieldTypeOnRobot { get; set; }
         public ulong time { get; set;  }
         public int timeLeftUntilCrazy { get; set; }
 

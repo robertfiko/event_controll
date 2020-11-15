@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
-namespace CrazyBot
+using CrazyBot.Persistance;
+
+namespace CrazyBot.View
 {
     public class GridButton : Button
     {

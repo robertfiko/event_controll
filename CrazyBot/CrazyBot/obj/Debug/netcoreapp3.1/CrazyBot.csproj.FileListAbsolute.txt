@@ -5,7 +5,6 @@ C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\bin\Debug\netcoreapp3.1\CrazyBot.dll
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\bin\Debug\netcoreapp3.1\CrazyBot.pdb
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.csprojAssemblyReference.cache
-C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.CrazyBotView.resources
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.csproj.GenerateResource.cache
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.AssemblyInfoInputs.cache
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.AssemblyInfo.cs
@@ -14,3 +13,4 @@ C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.pdb
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.genruntimeconfig.cache
 C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.Resource.resources
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.View.CrazyBotView.resources

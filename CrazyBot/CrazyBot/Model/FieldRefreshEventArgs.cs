@@ -1,6 +1,7 @@
 ﻿using System;
+using CrazyBot.Persistance;
 
-namespace CrazyBot
+namespace CrazyBot.Model
 {
     public class FieldRefreshEventArgs : EventArgs
     {

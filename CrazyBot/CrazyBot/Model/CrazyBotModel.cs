@@ -4,14 +4,17 @@ using System.Text;
 using System.Timers;
 using System.Windows.Forms;
 
-namespace CrazyBot
+using CrazyBot.Persistance;
+
+namespace CrazyBot.Model
 {
     class CrazyBotModel
     {
         private CrazyBotInfo gameInfo;
         private int magnetPos;
         private System.Timers.Timer timer;
-        int time;
+        private int time;
+        private CrazyBotFileDataAccess persistance;
 
         public event EventHandler<EventArgs> refreshBoard;
         public event EventHandler<FieldRefreshEventArgs> refreshField;
@@ -26,6 +29,7 @@ namespace CrazyBot
             magnetPos = -1;
             timer = new System.Timers.Timer(1000);
 
+            persistance = new CrazyBotFileDataAccess();
             timer.Elapsed += new ElapsedEventHandler(AdvanceTime);
         }
 
@@ -136,19 +140,9 @@ namespace CrazyBot
             timer.Start();
         }
 
-        internal void loadFromFile(string filePath)
-        {
-            
-        }
-
         
-        internal void saveToFile(string pathToSave)
-        {/*
-            if (gameInfo == null)
-                throw new InvalidOperationException("No data access is provided.");
 
-            gameInfo.SaveAsync(path, _table);*/
-        }
+       
 
         private void destructWall(int i, int j)
         {
@@ -248,6 +242,23 @@ namespace CrazyBot
                 DORefreshField(p);
             }
         }
+
+
+        internal async void saveGame(string path)
+        {
+            
+            if (gameInfo == null)
+                throw new InvalidOperationException("No data access is provided.");
+
+            await persistance.SaveAsync(path, gameInfo);
+        }
+
+        internal void loadFromFile(string filePath)
+        {
+
+        }
+
+
 
         #region Event SEND-ers aka. DO
         private void DORefreshBoard()

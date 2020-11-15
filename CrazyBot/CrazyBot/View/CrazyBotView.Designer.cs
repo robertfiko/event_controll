@@ -1,4 +1,4 @@
-﻿namespace CrazyBot
+﻿namespace CrazyBot.View
 {
     partial class CrazyBotView
     {

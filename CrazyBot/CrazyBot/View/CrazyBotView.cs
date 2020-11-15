@@ -1,16 +1,13 @@
 ﻿using System;
-//using System.Collections.Generic;
-//using System.ComponentModel;
-//using System.Data;
 using System.Drawing;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-using System.Windows.Forms;
+ using System.Windows.Forms;
 using System.Timers;
 using System.Collections.Generic;
 
-namespace CrazyBot
+using CrazyBot.Model;
+using CrazyBot.Persistance;
+
+namespace CrazyBot.View
 {
     public partial class CrazyBotView : Form
     {
@@ -122,6 +119,8 @@ namespace CrazyBot
             model.pause();
             play.Enabled = true;
             pause.Enabled = false;
+            load.Enabled = true;
+            save.Enabled = true;
             setStatusBarPaused();
             MessageBox.Show("Game is paused!\nTo continue, use the Game Menu or press Ctrl + Alt + Space!");
 
@@ -131,23 +130,34 @@ namespace CrazyBot
 
         public void onSave(object obj, EventArgs e)
         {
-            /*
+            foreach (var btn in buttons)
+            {
+                btn.Enabled = false;
+            }
+            model.pause();
+            play.Enabled = true;
+            pause.Enabled = false;
+
+
             SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Crazy files (*.crazy)|*.crazy";
+            dialog.DefaultExt = "crazy*";
+            dialog.AddExtension = true;
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    await _model.SaveGameAsync(_saveFileDialog.FileName);
+                    model.saveGame(dialog.FileName);
                 }
-                catch (SudokuDataException)
+                catch (Exception)
                 {
-                    MessageBox.Show("Játék mentése sikertelen!" + Environment.NewLine + "Hibás az elérési út, vagy a könyvtár nem írható.", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cannot save game!" + Environment.NewLine + "Wrong path or have no write right!.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                MessageBox.Show("Successfull save!");
             }
 
-            if (restartTimer)
-                _timer.Start();*/
 
 
         }
@@ -183,7 +193,7 @@ namespace CrazyBot
             pause.Enabled = true;
             play.Enabled = false;
             save.Enabled = false;
-            load.Enabled = true;
+            load.Enabled = false;
         }
 
         private GridButton GridButtonStyler(GridButton btn)
@@ -232,14 +242,6 @@ namespace CrazyBot
             return btn;
 
 
-
-            /*
-            public static Image resizeImage(Image imgToResize, Size size)
-            {
-                return (Image)(new Bitmap(imgToResize, size));
-            }
-
-            yourImage = resizeImage(yourImage, new Size(50, 50));*/
 
         }
 

@@ -6,9 +6,9 @@ using CrazyBot.Model;
 
 namespace CrazyBot.Persistance
 {
-    interface ICrazyBotDataModel
+    public interface ICrazyBotDataModel
     {
-        Task<CrazyBotInfo> LoadAsync(String path);
-        Task SaveAsync(String path, CrazyBotInfo info);
+        CrazyBotInfo Load(String path);
+        void Save(String path, CrazyBotInfo info);
     }
 }

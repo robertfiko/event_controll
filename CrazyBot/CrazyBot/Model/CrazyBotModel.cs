@@ -5,12 +5,13 @@ using CrazyBot.Persistance;
 
 namespace CrazyBot.Model
 {
-    class CrazyBotModel
+    public class CrazyBotModel
     {
         private CrazyBotInfo gameInfo;
         private int magnetPos;
         private System.Timers.Timer timer;
         private CrazyBotFileDataAccess persistance;
+        private bool gameIsOver;
 
         public event EventHandler<EventArgs> refreshBoard;
         public event EventHandler<FieldRefreshEventArgs> refreshField;
@@ -23,6 +24,7 @@ namespace CrazyBot.Model
             gameInfo = null;
             magnetPos = -1;
             timer = new System.Timers.Timer(1000);
+            gameIsOver = false;
 
             persistance = new CrazyBotFileDataAccess();
             timer.Elapsed += new ElapsedEventHandler(AdvanceTime);
@@ -44,7 +46,7 @@ namespace CrazyBot.Model
         }
         public bool isInGame()
         {
-            return gameInfo != null;
+            return gameInfo != null && !gameIsOver;
         }
         public int getTime()
         {
@@ -63,7 +65,7 @@ namespace CrazyBot.Model
 
         #region Robot Handlers :: direction, step, move, destructwall, invertwall
 
-        internal void invertWall(Position p)
+        public void invertWall(Position p)
         {
             if (getRobotPos().Equals(p)) return;
             if (getMagnetPos().Equals(p)) return;
@@ -174,23 +176,24 @@ namespace CrazyBot.Model
 
         #region Game Management :: play, pause, gameOver, newGame, advanceTime
 
-        internal void pause()
+        public void pause()
         {
             timer.Stop();  
         }
 
-        internal void play()
+        public void play()
         {
             timer.Start();
         }
 
         private void gameOver()
         {
+            gameIsOver = true;
             timer.Stop();
             DOgameOver();
         }
 
-        internal void newGame(int size, CrazyBotInfo gameInfoTOImport = null)
+        public void newGame(int size, CrazyBotInfo gameInfoTOImport = null)
         {
             var rand = new Random();
 
@@ -213,12 +216,13 @@ namespace CrazyBot.Model
 
             DORefreshBoard();
 
+            gameInfo.time = 0;
             timer.Start();
 
 
         }
 
-        internal void AdvanceTime(object obj, EventArgs e)
+        public void AdvanceTime(object obj, EventArgs e)
         {
             //Advancing time
             gameInfo.time++;
@@ -242,18 +246,18 @@ namespace CrazyBot.Model
 
         #region Save & Load
 
-        internal async void saveGame(string path)
+        public void saveGame(string path)
         {
 
             if (gameInfo == null)
                 throw new InvalidOperationException("No data access is provided.");
 
-            await persistance.SaveAsync(path, gameInfo);
+             persistance.Save(path, gameInfo);
         }
 
-        internal void loadFromFile(string path)
+        public void loadFromFile(string path)
         {
-            CrazyBotInfo info = persistance.LoadAsync(path).Result;
+            CrazyBotInfo info = persistance.Load(path);
             newGame(info.size, info);
             pause();
         }

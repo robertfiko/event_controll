@@ -9,7 +9,7 @@ namespace CrazyBot.Persistance
 {
     class CrazyBotFileDataAccess : ICrazyBotDataModel
     {
-        public async Task<CrazyBotInfo> LoadAsync(String path)
+        public CrazyBotInfo Load(String path)
         {
             try
 
@@ -17,29 +17,29 @@ namespace CrazyBot.Persistance
                 using (StreamReader reader = new StreamReader(path)) // fájl megnyitása
                 {
                     
-                    String line = reader.ReadLineAsync().Result;
+                    String line = reader.ReadLine();
                     int size = Int32.Parse(line);
 
-                    line = reader.ReadLineAsync().Result;
+                    line = reader.ReadLine();
                     Position RobotPozition = new Position(Int32.Parse(line.Split(" ")[0]), Int32.Parse(line.Split(" ")[1]));
 
-                    line = reader.ReadLineAsync().Result;
+                    line = reader.ReadLine();
                     RobotDirection RobotDir = (RobotDirection)(Int32.Parse(line));
 
-                    line = reader.ReadLineAsync().Result;
+                    line = reader.ReadLine();
                     FieldType fieldTypeOnRobot = (FieldType)Int32.Parse(line);
 
-                    line = reader.ReadLineAsync().Result;
+                    line = reader.ReadLine();
                     ulong time = Convert.ToUInt64(line);
 
-                    line = reader.ReadLineAsync().Result;
+                    line = reader.ReadLine();
                     int crazyTime = Int32.Parse(line);
 
                     CrazyBotInfo table = new CrazyBotInfo(size, RobotPozition, time, RobotDir, fieldTypeOnRobot, crazyTime);
 
                     for (Int32 i = 0; i < size; i++)
                     {
-                        line = reader.ReadLineAsync().Result;
+                        line = reader.ReadLine();
                         var numbers = line.Split(' ');
 
                         for (Int32 j = 0; j < size; j++)
@@ -56,7 +56,7 @@ namespace CrazyBot.Persistance
             }
         }
 
-        public async Task SaveAsync(String path, CrazyBotInfo gameInfo)
+        public void Save(String path, CrazyBotInfo gameInfo)
         {
             try
             {
@@ -73,9 +73,9 @@ namespace CrazyBot.Persistance
                     {
                         for (Int32 j = 0; j < gameInfo.size; j++)
                         {
-                            await writer.WriteAsync((int)gameInfo.board[i, j] + " "); // kiírjuk az értékeket
+                            writer.Write((int)gameInfo.board[i, j] + " "); // kiírjuk az értékeket
                         }
-                        await writer.WriteLineAsync();
+                        writer.WriteLine();
                     }
                 }
             }

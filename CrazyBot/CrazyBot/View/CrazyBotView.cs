@@ -103,11 +103,11 @@ namespace CrazyBot.View
 
         public void onPause(object obj, EventArgs e)
         {
+            model.pause();
             foreach (var btn in buttons)
             {
                 btn.Enabled = false;
             }
-            model.pause();
             play.Enabled = true;
             pause.Enabled = false;
             load.Enabled = true;
@@ -121,11 +121,12 @@ namespace CrazyBot.View
 
         public void onSave(object obj, EventArgs e)
         {
+            /*
             foreach (var btn in buttons)
             {
                 btn.Enabled = false;
-            }
-            model.pause();
+            }*/
+            //model.pause();
             play.Enabled = true;
             pause.Enabled = false;
 
@@ -161,26 +162,26 @@ namespace CrazyBot.View
             
             openFileDialog.InitialDirectory = "c:\\";
             openFileDialog.Filter = "CRAZY files (*.crazy)|*.crazy";
-            openFileDialog.FilterIndex = 2;
             openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 //Get the path of specified file
                 filePath = openFileDialog.FileName;
+
+                model.loadFromFile(filePath);
+                boardGrid.Visible = true;
+
+                pause.Enabled = false;
+                play.Enabled = true;
+                save.Enabled = false;
+                load.Enabled = false;
+
+                statusBar.Text = "Game has loaded. Press play to continue";
             }
             
 
-            model.loadFromFile(filePath);
-            model.loadFromFile(filePath);
-            boardGrid.Visible = true;
-
-            pause.Enabled = false;
-            play.Enabled = true;
-            save.Enabled = false;
-            load.Enabled = false;
-
-            statusBar.Text = "Game has loaded. Press play to continue";
+            
 
         }
 
@@ -311,8 +312,6 @@ namespace CrazyBot.View
                 play.Enabled = false;
                 save.Enabled = false;
                 load.Enabled = true;
-
-
             }
 
             if (boardGrid.InvokeRequired)

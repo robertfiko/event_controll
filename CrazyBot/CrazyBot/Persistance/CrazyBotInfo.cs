@@ -4,9 +4,9 @@ using System.Text;
 
 namespace CrazyBot.Persistance
 {
-    enum FieldType { NO_WALL = 0, WALL = 1, CANNOT_WALL = 2, ROBOT = 3, MAGNET = 4 }
-    enum RobotDirection { UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 }
-    class CrazyBotInfo
+    public enum FieldType { NO_WALL = 0, WALL = 1, CANNOT_WALL = 2, ROBOT = 3, MAGNET = 4 }
+    public enum RobotDirection { UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 }
+    public class CrazyBotInfo
     {
         public int size { get; private set; }
         public FieldType[,] board { get; set; }

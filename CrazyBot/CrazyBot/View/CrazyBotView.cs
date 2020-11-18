@@ -121,12 +121,7 @@ namespace CrazyBot.View
 
         public void onSave(object obj, EventArgs e)
         {
-            /*
-            foreach (var btn in buttons)
-            {
-                btn.Enabled = false;
-            }*/
-            //model.pause();
+            
             play.Enabled = true;
             pause.Enabled = false;
 
@@ -379,7 +374,6 @@ namespace CrazyBot.View
                 update();
             }
         }
-
         private void setStatusBarPaused()
         {
             void update()

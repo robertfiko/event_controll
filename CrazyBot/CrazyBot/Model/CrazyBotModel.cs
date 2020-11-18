@@ -10,7 +10,7 @@ namespace CrazyBot.Model
         private CrazyBotInfo gameInfo;
         private int magnetPos;
         private System.Timers.Timer timer;
-        private CrazyBotFileDataAccess persistance;
+        private ICrazyBotDataModel persistance;
         private bool gameIsOver;
 
         public event EventHandler<EventArgs> refreshBoard;
@@ -203,6 +203,7 @@ namespace CrazyBot.Model
 
             if (gameInfoTOImport == null)
             {
+                gameIsOver = false;
                 int x = rand.Next(size);
                 while (x == magnetPos) x = rand.Next(size);
                 int y = rand.Next(size);
@@ -284,10 +285,7 @@ namespace CrazyBot.Model
             OnGameOver?.Invoke(this, new EventArgs());
         }
 
-        private void DOdisplayPaused()
-        {
-            displayPaused?.Invoke(this, new EventArgs());
-        }
+        
 
         #endregion
 

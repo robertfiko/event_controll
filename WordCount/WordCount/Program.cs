@@ -11,7 +11,6 @@ namespace WordCount
             String file = "";
             Boolean exsists = false;
             Boolean extension = false;
-            Console.WriteLine("sajt:");
 
             while (!(exsists && extension)) {
                 Console.WriteLine("Kerek egy fajlnevet:");

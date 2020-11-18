@@ -6208,11 +6208,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBotTest\\CrazyBotTest.csproj",
+      "projectUniqueName": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBotTest\\CrazyBotTest.csproj",
       "projectName": "CrazyBotTest",
-      "projectPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBotTest\\CrazyBotTest.csproj",
+      "projectPath": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBotTest\\CrazyBotTest.csproj",
       "packagesPath": "C:\\Users\\Fikó Róbert\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBotTest\\obj\\",
+      "outputPath": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBotTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Fikó Róbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6228,8 +6228,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBot\\CrazyBot.csproj": {
-              "projectPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBot\\CrazyBot.csproj"
+            "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBot\\CrazyBot.csproj": {
+              "projectPath": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBot\\CrazyBot.csproj"
             }
           }
         }

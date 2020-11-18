@@ -7,7 +7,7 @@ using CrazyBot.Model;
 
 namespace CrazyBot.Persistance
 {
-    class CrazyBotFileDataAccess : ICrazyBotDataModel
+    public class CrazyBotFileDataAccess : ICrazyBotDataModel
     {
         public CrazyBotInfo Load(String path)
         {

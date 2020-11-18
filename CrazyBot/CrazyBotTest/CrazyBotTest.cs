@@ -33,11 +33,11 @@ namespace CrazyBot.Test
             Assert.AreEqual(gameModel.getSize(), 11);
             Assert.AreEqual(gameInfo11.size, 11);
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 int prev = gameModel.getTime();
                 gameModel.AdvanceTime(this, new System.EventArgs());
-                Assert.IsTrue(prev < gameModel.getTime());
+                if (gameModel.isInGame()) Assert.IsTrue(prev < gameModel.getTime());
 
             }
 

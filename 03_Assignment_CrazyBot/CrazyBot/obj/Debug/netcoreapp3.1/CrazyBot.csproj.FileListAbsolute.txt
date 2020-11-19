@@ -1,0 +1,16 @@
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\bin\Debug\netcoreapp3.1\CrazyBot.exe
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\bin\Debug\netcoreapp3.1\CrazyBot.deps.json
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\bin\Debug\netcoreapp3.1\CrazyBot.runtimeconfig.json
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\bin\Debug\netcoreapp3.1\CrazyBot.runtimeconfig.dev.json
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\bin\Debug\netcoreapp3.1\CrazyBot.dll
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\bin\Debug\netcoreapp3.1\CrazyBot.pdb
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.csprojAssemblyReference.cache
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.Resource.resources
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.View.CrazyBotView.resources
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.csproj.GenerateResource.cache
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.AssemblyInfoInputs.cache
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.AssemblyInfo.cs
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.csproj.CoreCompileInputs.cache
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.dll
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.pdb
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\CrazyBot\CrazyBot\obj\Debug\netcoreapp3.1\CrazyBot.genruntimeconfig.cache

@@ -56,19 +56,64 @@ namespace PingPong
         {
             if (isStarted)
             {
-                //utőnek balról
-                //ütőnek jobbról
+                ballCurrentPosition = ellipseBall.Margin;
+                padCurrentPostition = rectanglePad.Margin;
+
+                //ütönek ütközött  (bal/jobb)
+                if (ballCurrentPosition.Top + ellipseBall.Height >= padCurrentPostition.Top && //A labda alja az ütő tetejével egybeért
+                    ballCurrentPosition.Left + ellipseBall.Width > padCurrentPostition.Left &&
+                    ballCurrentPosition.Left + ellipseBall.Width < padCurrentPostition.Left + rectanglePad.Width)
+                {
+
+                    bool fromLeft = ballCurrentPosition.Left < ballNextPosition.Left;
+                    if (fromLeft)
+                    {
+                        speedFactor = speedFactor * 1.05f;
+                        ballNextPosition.Top = 0;
+                        ballNextPosition.Left = ballCurrentPosition.Left - (this.Width / 3);
+                    }
+                    else
+                    {
+                        speedFactor = speedFactor * 1.05f;
+                        ballNextPosition.Top = 0;
+                        ballNextPosition.Left = ballCurrentPosition.Left + (this.Width / 3);
+
+                    }
+
+                    AnimateBall();
+                }
 
                 //tetőnek
-                if (ballCurrentPosition.Top == 0)
+                else if (ballCurrentPosition.Top == 0)
                 {
                     ballNextPosition.Top = this.Height;
+                    AnimateBall();
                 }
 
                 //ablak baloldalának
-                if (ballCurrentPosition.Left == 0)
+                else if (ballCurrentPosition.Left <= 0)
                 {
                     ballNextPosition.Left = this.Width;
+                    AnimateBall();
+                }
+
+                //ablak jobb
+                else if (ballCurrentPosition.Left >= this.Width - 40)
+                {
+                    ballNextPosition.Left = 0;
+                    AnimateBall();
+                }
+
+                //túlmegy az ütőn
+                else if (ballCurrentPosition.Top == this.Height)
+                {
+                    MessageBox.Show("Game Over");
+                    StopGame();
+
+
+
+
+
                 }
             }
 
@@ -96,7 +141,9 @@ namespace PingPong
 
             int dir = (rand.Next(0, 2) == 0) ? (int)this.Height : 0;
 
-            ballCurrentPosition = new Thickness(rand.NextDouble() * this.Width, dir, 0, 0);
+            //ballCurrentPosition = new Thickness(rand.NextDouble() * this.Width, dir, 0, 0);
+            ballNextPosition.Top = 0;
+            ballNextPosition.Left = 100;
 
             startTime = DateTime.Now;
 
@@ -114,7 +161,7 @@ namespace PingPong
         private void AnimateBall()
         {
             ballAnimation = new ThicknessAnimation(ballCurrentPosition, ballNextPosition, new Duration(TimeSpan.FromMilliseconds(5)));
-            float SpeedRatio = speedFactor / BallTravelDistance();
+            ballAnimation.SpeedRatio = speedFactor / (BallTravelDistance() == 0 ? 0.0001 : BallTravelDistance());
 
             ellipseBall.BeginAnimation(Ellipse.MarginProperty, ballAnimation, HandoffBehavior.SnapshotAndReplace);
         }
@@ -157,7 +204,7 @@ namespace PingPong
 
         private void AnimatePad(int v)
         {
-            padAnimation = new ThicknessAnimation(rectanglePad.Margin, new Thickness(rectanglePad.Margin.Left + v, rectanglePad.Margin.Top, rectanglePad.Margin.Right, rectanglePad.Margin.Bottom), new Duration(new TimeSpan(100)));
+            padAnimation = new ThicknessAnimation(rectanglePad.Margin, new Thickness(rectanglePad.Margin.Left + v, rectanglePad.Margin.Top, rectanglePad.Margin.Right, rectanglePad.Margin.Bottom), new Duration(TimeSpan.FromMilliseconds(100)));
             rectanglePad.BeginAnimation(Rectangle.MarginProperty, padAnimation, HandoffBehavior.SnapshotAndReplace);
 
         }

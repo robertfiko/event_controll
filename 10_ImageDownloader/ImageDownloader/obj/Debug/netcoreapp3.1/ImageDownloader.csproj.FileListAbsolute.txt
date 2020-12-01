@@ -1,0 +1,17 @@
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\bin\Debug\netcoreapp3.1\ImageDownloader.exe
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\bin\Debug\netcoreapp3.1\ImageDownloader.deps.json
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\bin\Debug\netcoreapp3.1\ImageDownloader.runtimeconfig.json
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\bin\Debug\netcoreapp3.1\ImageDownloader.runtimeconfig.dev.json
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\bin\Debug\netcoreapp3.1\ImageDownloader.dll
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\bin\Debug\netcoreapp3.1\ImageDownloader.pdb
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\bin\Debug\netcoreapp3.1\HtmlAgilityPack.dll
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\obj\Debug\netcoreapp3.1\ImageDownloader.csprojAssemblyReference.cache
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\obj\Debug\netcoreapp3.1\ImageDownloader.MainForm.resources
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\obj\Debug\netcoreapp3.1\ImageDownloader.csproj.GenerateResource.cache
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\obj\Debug\netcoreapp3.1\ImageDownloader.AssemblyInfoInputs.cache
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\obj\Debug\netcoreapp3.1\ImageDownloader.AssemblyInfo.cs
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\obj\Debug\netcoreapp3.1\ImageDownloader.csproj.CoreCompileInputs.cache
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\obj\Debug\netcoreapp3.1\ImageDownloader.csproj.CopyComplete
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\obj\Debug\netcoreapp3.1\ImageDownloader.dll
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\obj\Debug\netcoreapp3.1\ImageDownloader.pdb
+C:\Users\Fikó Róbert\Source\Repos\robertfiko\event_controll\10_ImageDownloader\ImageDownloader\obj\Debug\netcoreapp3.1\ImageDownloader.genruntimeconfig.cache

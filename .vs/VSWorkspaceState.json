@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CrazyBot\\CrazyBot",
-    "\\ImageDownloader",
-    "\\WordCount\\WordCount"
+    "\\10_ImageDownloader"
   ],
-  "SelectedNode": "\\ImageDownloader\\ImageDownloader.sln",
+  "SelectedNode": "\\10_ImageDownloader\\ImageDownloader.sln",
   "PreviewInSolutionExplorer": false
 }

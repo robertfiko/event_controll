@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "MD2NZ8W0YBCS291jrObot/MXQuziZPbrGogILaivE14+MaakZvTq0nXmLlUYBvHNmpdlglT5xR0f0dFAAErpow==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\10_ImageDownloader\\ImageDownloader\\ImageDownloader.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Fikó Róbert\\.nuget\\packages\\htmlagilitypack\\1.11.28\\htmlagilitypack.1.11.28.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,17 @@
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\bin\Debug\netcoreapp3.1\Sudoku.exe
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\bin\Debug\netcoreapp3.1\Sudoku.deps.json
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\bin\Debug\netcoreapp3.1\Sudoku.runtimeconfig.json
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\bin\Debug\netcoreapp3.1\Sudoku.runtimeconfig.dev.json
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\bin\Debug\netcoreapp3.1\Sudoku.dll
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\bin\Debug\netcoreapp3.1\Sudoku.pdb
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\View\MainWindow.baml
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\Sudoku_MarkupCompile.cache
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\Sudoku.g.resources
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\Sudoku.AssemblyInfoInputs.cache
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\Sudoku.AssemblyInfo.cs
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\Sudoku.csproj.CoreCompileInputs.cache
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\Sudoku.dll
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\Sudoku.pdb
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\00_Fourth_Assignment_Example\Sudoku\obj\Debug\netcoreapp3.1\Sudoku.genruntimeconfig.cache

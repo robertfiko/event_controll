@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBot\\CrazyBot.csproj": {}
+    "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\03_Assignment_CrazyBot\\CrazyBot\\CrazyBot.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBot\\CrazyBot.csproj": {
+    "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\03_Assignment_CrazyBot\\CrazyBot\\CrazyBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBot\\CrazyBot.csproj",
+        "projectUniqueName": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\03_Assignment_CrazyBot\\CrazyBot\\CrazyBot.csproj",
         "projectName": "CrazyBot",
-        "projectPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBot\\CrazyBot.csproj",
+        "projectPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\03_Assignment_CrazyBot\\CrazyBot\\CrazyBot.csproj",
         "packagesPath": "C:\\Users\\Fikó Róbert\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBot\\obj\\",
+        "outputPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\03_Assignment_CrazyBot\\CrazyBot\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Fikó Róbert\\AppData\\Roaming\\NuGet\\NuGet.Config",

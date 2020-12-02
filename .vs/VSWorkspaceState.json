@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\10_ImageDownloader"
+    "\\10_ImageDownloader",
+    "\\12_PingPong"
   ],
-  "SelectedNode": "\\10_ImageDownloader\\ImageDownloader.sln",
+  "SelectedNode": "\\12_PingPong\\PingPong.sln",
   "PreviewInSolutionExplorer": false
 }

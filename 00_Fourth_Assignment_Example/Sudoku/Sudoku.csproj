@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>ELTE.Sudoku</RootNamespace>
+    <Copyright>Copyright © Máté Cserép, Roberto Giachetta 2020</Copyright>
+    <Company>Eötvös Loránd University (ELTE), Faculty of Informatics</Company>
+    <Authors>Máté Cserép, Roberto Giachetta</Authors>
+  </PropertyGroup>
+
+</Project>

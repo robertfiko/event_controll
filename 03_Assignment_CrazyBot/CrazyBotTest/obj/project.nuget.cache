@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OcWQ6mTOPKfLNVlz7vRs+yH7e/7khuaLy0N8+nBaGpAlO+0VdcWZoMBDUtPZ0+7bSYBxnuAyTcrp4rtBNwivSA==",
+  "dgSpecHash": "tug7uRO3Syip253wAqQWrY2ax7i5Z/MK4tt7YlTgFfokpYvpvyMHRSItuqi+UmsjjKs+Gko9mXHLN2fYGS0jxA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\CrazyBot\\CrazyBotTest\\CrazyBotTest.csproj",
+  "projectFilePath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\03_Assignment_CrazyBot\\CrazyBotTest\\CrazyBotTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Fikó Róbert\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\Fikó Róbert\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",

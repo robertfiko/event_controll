@@ -7,7 +7,7 @@ namespace RoboChase.Persistance
 {
     public enum FieldType { NO_WALL = 0, WALL = 1, CANNOT_WALL = 2, ROBOT = 3, MAGNET = 4 }
     public enum RobotDirection { UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 }
-    public class CrazyBotInfo
+    public class RoboChaseInfo
     {
         public int size { get; private set; }
         public FieldType[,] board { get; set; }
@@ -20,7 +20,7 @@ namespace RoboChase.Persistance
 
 
 
-        public CrazyBotInfo(int _size, Position _robot, ulong _time, RobotDirection _rd = RobotDirection.UP, FieldType fieldOnBot = FieldType.NO_WALL, int timeleft = -1)
+        public RoboChaseInfo(int _size, Position _robot, ulong _time, RobotDirection _rd = RobotDirection.UP, FieldType fieldOnBot = FieldType.NO_WALL, int timeleft = -1)
         {
             size = _size;
             robot = _robot;

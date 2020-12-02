@@ -6,9 +6,9 @@ using RoboChase.Model;
 
 namespace RoboChase.Persistance
 {
-    public interface ICrazyBotDataModel
+    public interface IRoboChaseDataModel
     {
-        CrazyBotInfo Load(String path);
-        void Save(String path, CrazyBotInfo info);
+        RoboChaseInfo Load(String path);
+        void Save(String path, RoboChaseInfo info);
     }
 }

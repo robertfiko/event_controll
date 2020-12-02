@@ -5,12 +5,12 @@ using RoboChase.Persistance;
 
 namespace RoboChase.Model
 {
-    public class CrazyBotModel
+    public class RoboChaseModel
     {
-        private CrazyBotInfo gameInfo;
+        private RoboChaseInfo gameInfo;
         private int magnetPos;
         private System.Timers.Timer timer;
-        private ICrazyBotDataModel persistance;
+        private IRoboChaseDataModel persistance;
         private bool gameIsOver;
 
         public event EventHandler<EventArgs> refreshBoard;
@@ -19,14 +19,14 @@ namespace RoboChase.Model
         public event EventHandler<EventArgs> OnGameOver;
         public event EventHandler<EventArgs> displayPaused;
 
-        public CrazyBotModel()
+        public RoboChaseModel()
         {
             gameInfo = null;
             magnetPos = -1;
             timer = new System.Timers.Timer(1000);
             gameIsOver = false;
 
-            persistance = new CrazyBotFileDataAccess();
+            persistance = new RoboChaseFileDataAccess();
             timer.Elapsed += new ElapsedEventHandler(AdvanceTime);
         }
 
@@ -193,7 +193,7 @@ namespace RoboChase.Model
             DOgameOver();
         }
 
-        public void newGame(int size, CrazyBotInfo gameInfoTOImport = null)
+        public void newGame(int size, RoboChaseInfo gameInfoTOImport = null)
         {
             var rand = new Random();
 
@@ -208,7 +208,7 @@ namespace RoboChase.Model
                 while (x == magnetPos) x = rand.Next(size);
                 int y = rand.Next(size);
                 while (y == magnetPos) y = rand.Next(size);
-                gameInfo = new CrazyBotInfo(size, new Position(x, y), 0, RobotDirection.UP, FieldType.NO_WALL, rand.Next(16));
+                gameInfo = new RoboChaseInfo(size, new Position(x, y), 0, RobotDirection.UP, FieldType.NO_WALL, rand.Next(16));
             }
             else
             {
@@ -258,7 +258,7 @@ namespace RoboChase.Model
 
         public void loadFromFile(string path)
         {
-            CrazyBotInfo info = persistance.Load(path);
+            RoboChaseInfo info = persistance.Load(path);
             newGame(info.size, info);
             pause();
         }

@@ -7,9 +7,9 @@ using RoboChase.Model;
 
 namespace RoboChase.Persistance
 {
-    public class CrazyBotFileDataAccess : ICrazyBotDataModel
+    public class RoboChaseFileDataAccess : IRoboChaseDataModel
     {
-        public CrazyBotInfo Load(String path)
+        public RoboChaseInfo Load(String path)
         {
             try
 
@@ -35,7 +35,7 @@ namespace RoboChase.Persistance
                     line = reader.ReadLine();
                     int crazyTime = Int32.Parse(line);
 
-                    CrazyBotInfo table = new CrazyBotInfo(size, RobotPozition, time, RobotDir, fieldTypeOnRobot, crazyTime);
+                    RoboChaseInfo table = new RoboChaseInfo(size, RobotPozition, time, RobotDir, fieldTypeOnRobot, crazyTime);
 
                     for (Int32 i = 0; i < size; i++)
                     {
@@ -56,7 +56,7 @@ namespace RoboChase.Persistance
             }
         }
 
-        public void Save(String path, CrazyBotInfo gameInfo)
+        public void Save(String path, RoboChaseInfo gameInfo)
         {
             try
             {

@@ -6,8 +6,116 @@
         xmlns:local="clr-namespace:RoboChase"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="Converter" />
+    </Window.Resources>
+
     <Grid>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="New game">
+                <MenuItem Header="Size: 7 x 7" Command="{Binding NewSmallGameCommand}" />
+                <MenuItem Header="Size: 11 x 11" Command="{Binding NewMediumGameCommand}" />
+                <MenuItem Header="Size: 15 x 15" Command="{Binding NewLargeGameCommand}" />
+                <Separator />
+                <MenuItem Header="Exit" Command="{Binding ExitCommand}" />
+            </MenuItem>
+            <MenuItem Header="Game menu">
+                <MenuItem Header="Play" Command="{Binding PlayCommand}" />
+                <MenuItem Header="Pause" Command="{Binding PauseCommand}" />
+                <Separator/>
+                <MenuItem Header="Save" Command="{Binding SaveCommand}" />
+                <MenuItem Header="Load" Command="{Binding LoadCommand}" />
+            </MenuItem>
+        </Menu>
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Fields}">
+            <!--az mezőket tároló vezérlő-->
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <!--a gombokat egy rácsba fűzzük fel-->
+                    <UniformGrid Rows="{ Binding N }" Columns="{ Binding N }" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <!--az elemek gombok lesznek-->
+                <DataTemplate>
+                    <Button Command="{Binding StepCommand}" CommandParameter="{Binding Number}" Content="{Binding Text}" Focusable="False" RenderTransformOrigin="0.5, 0.5" FontSize="24" FontWeight="Bold">
+                        <!-- gomb háttérszíne -->
+                        <!-- gomb méretezése (csak az animációnál használjuk ki) -->
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Button.Style>
+                            <!-- gomb stílusa, ahol a színét megadjuk -->
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <!-- a szín egy adatkötés hatására fog változni -->
+                                    <DataTrigger Binding="{Binding IsLocked}" Value="True">
+                                        <Setter Property="Background" Value="Yellow" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsLocked}" Value="False">
+                                        <Setter Property="Background" Value="White" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Triggers>
+                            <!-- animációk végrehajtása esemény hatására -->
+                            <EventTrigger RoutedEvent="Button.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:00:02" From="0" To="1" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Duration="0:00:00.2" Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+                                            <ColorAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteColorKeyFrame Value="Red" KeyTime="0:00:00" />
+                                                <DiscreteColorKeyFrame Value="Black" KeyTime="0:00:00.2" />
+                                            </ColorAnimationUsingKeyFrames.KeyFrames>
+                                        </ColorAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0:00:00.1" From="1" To="0.5" AutoReverse="True" Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" />
+                                        <DoubleAnimation Duration="0:00:00.1" From="1" To="0.5" AutoReverse="True" Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
+                <!--a függőségi tulajdonságokat kjülön kell kötnünk-->
+                <Style>
+                    <Setter Property="Grid.Row" Value="{Binding X}" />
+                    <Setter Property="Grid.Column" Value="{Binding Y}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
         
+        
+        
+
+        <StatusBar Grid.Row="2" VerticalAlignment="Bottom" >
+            <StatusBarItem>
+                <TextBlock Text=" Time passed: " />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding GameTime}" />
+            </StatusBarItem>
+            <Separator Visibility="{Binding Path=CurrentGameStatus, Converter={StaticResource Converter}}" />
+            <StatusBarItem>
+                <TextBlock Text="{Binding CurrentGameStatus}" />
+            </StatusBarItem>
+           
+            <StatusBarItem />
+        </StatusBar>
+
+
 
     </Grid>
 </Window>

@@ -5,11 +5,9 @@ C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChas
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\bin\Debug\netcoreapp3.1\RoboChase.dll
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\bin\Debug\netcoreapp3.1\RoboChase.pdb
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\RoboChase.csprojAssemblyReference.cache
-C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\RoboChase_MarkupCompile.cache
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\RoboChase_MarkupCompile.lref
-C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\RoboChase.g.resources
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\RoboChase.AssemblyInfoInputs.cache
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\RoboChase.AssemblyInfo.cs
@@ -17,3 +15,5 @@ C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChas
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\RoboChase.dll
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\RoboChase.pdb
 C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\RoboChase.genruntimeconfig.cache
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
+C:\Users\Fikó Róbert\source\repos\robertfiko\event_controll\RoboChase\RoboChase\obj\Debug\netcoreapp3.1\View\MainWindow.baml

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using CrazyBot.Model;
+using RoboChase.Model;
 
-namespace CrazyBot.Persistance
+namespace RoboChase.Persistance
 {
     public interface ICrazyBotDataModel
     {

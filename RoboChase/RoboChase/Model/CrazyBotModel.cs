@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Timers;
 
-using CrazyBot.Persistance;
+using RoboChase.Persistance;
 
-namespace CrazyBot.Model
+namespace RoboChase.Model
 {
     public class CrazyBotModel
     {

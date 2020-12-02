@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CrazyBot.Persistance
+namespace RoboChase.Persistance
 {
     public enum FieldType { NO_WALL = 0, WALL = 1, CANNOT_WALL = 2, ROBOT = 3, MAGNET = 4 }
     public enum RobotDirection { UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 }

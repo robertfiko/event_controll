@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CrazyBot.Persistance
+namespace RoboChase.Persistance
 {
     public class Position
     {

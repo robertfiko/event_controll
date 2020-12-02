@@ -43,7 +43,6 @@ namespace RoboChase
 
             
             _viewModel = new RoboChaseViewModel(_model);
-            _viewModel.NewGame += new EventHandler(ViewModel_NewGame);
             _viewModel.ExitGame += new EventHandler(ViewModel_ExitGame);
             _viewModel.LoadGame += new EventHandler(ViewModel_LoadGame);
             _viewModel.SaveGame += new EventHandler(ViewModel_SaveGame);

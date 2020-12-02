@@ -83,11 +83,12 @@ namespace RoboChase.Model
                 Position prevPostionOfRobot = new Position(gameInfo.robot.X, gameInfo.robot.Y);
                 FieldType robotPrev = gameInfo.fieldTypeOnRobot;
                 getBoard()[prevPostionOfRobot.X, prevPostionOfRobot.Y] = robotPrev;
-
+                //DORefreshField(gameInfo.robot);
 
                 //Robot put-down
                 oneStepRobot();
                 DORefreshField(prevPostionOfRobot);
+
                 if (getBoard()[gameInfo.robot.X, gameInfo.robot.Y] == FieldType.MAGNET)
                 {
                     gameOver();

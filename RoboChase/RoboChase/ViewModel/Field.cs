@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ELTE.Sudoku.ViewModel
+namespace RoboChase.ViewModel
 {
     /// <summary>
     /// Sudoku játékmező típusa.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ELTE.Sudoku.ViewModel
+namespace RoboChase.ViewModel
 {
     /// <summary>
     /// Általános parancs típusa.

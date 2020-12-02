@@ -2,11 +2,9 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ELTE.Sudoku.ViewModel
+namespace RoboChase.ViewModel
 {
-    /// <summary>
-    /// Nézetmodell ősosztály típusa.
-    /// </summary>
+
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
         /// <summary>

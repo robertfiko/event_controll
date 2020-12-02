@@ -7,29 +7,25 @@ using System.Threading.Tasks;
 using System.Windows;
 
 using RoboChase.Model;
+using RoboChase.ViewModel;
+using RoboChase.View;
+
 
 namespace RoboChase
 {
-    
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
+
     public partial class App : Application
     {
         #region Fields
 
         private RoboChaseModel _model;
-        private SudokuViewModel _viewModel;
+        private RoboChaseViewModel _viewModel;
         private MainWindow _view;
-        private DispatcherTimer _timer;
 
         #endregion
 
         #region Constructors
 
-        /// <summary>
-        /// Alkalmazás példányosítása.
-        /// </summary>
         public App()
         {
             Startup += new StartupEventHandler(App_Startup);
@@ -41,13 +37,12 @@ namespace RoboChase
 
         private void App_Startup(object sender, StartupEventArgs e)
         {
-            // modell létrehozása
-            _model = new SudokuGameModel(new SudokuFileDataAccess());
-            _model.GameOver += new EventHandler<SudokuEventArgs>(Model_GameOver);
-            _model.NewGame();
+            _model = new RoboChaseModel();
+            _model.OnGameOver += new EventHandler</*SudokuEventArgs*/EventArgs>(Model_GameOver);
+            //_model.newGame();
 
-            // nézemodell létrehozása
-            _viewModel = new SudokuViewModel(_model);
+            
+            _viewModel = new RoboChaseViewModel(_model);
             _viewModel.NewGame += new EventHandler(ViewModel_NewGame);
             _viewModel.ExitGame += new EventHandler(ViewModel_ExitGame);
             _viewModel.LoadGame += new EventHandler(ViewModel_LoadGame);
@@ -59,37 +54,29 @@ namespace RoboChase
             _view.Closing += new System.ComponentModel.CancelEventHandler(View_Closing); // eseménykezelés a bezáráshoz
             _view.Show();
 
-            // időzítő létrehozása
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(1);
-            _timer.Tick += new EventHandler(Timer_Tick);
-            _timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            _model.AdvanceTime();
+            //_model.AdvanceTime();
         }
 
         #endregion
 
         #region View event handlers
 
-        /// <summary>
-        /// Nézet bezárásának eseménykezelője.
-        /// </summary>
-        private void View_Closing(object sender, CancelEventArgs e)
+        private void View_Closing(object sender, EventArgs e)
         {
-            Boolean restartTimer = _timer.IsEnabled;
+            //Boolean restartTimer = _timer.IsEnabled;
 
-            _timer.Stop();
+            //_timer.Stop();
 
             if (MessageBox.Show("Biztos, hogy ki akar lépni?", "Sudoku", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
             {
-                e.Cancel = true; // töröljük a bezárást
+                //e.Cancel = true; // töröljük a bezárást
 
-                if (restartTimer) // ha szükséges, elindítjuk az időzítőt
-                    _timer.Start();
+               // if (restartTimer) // ha szükséges, elindítjuk az időzítőt
+               //     _timer.Start();
             }
         }
 
@@ -102,8 +89,8 @@ namespace RoboChase
         /// </summary>
         private void ViewModel_NewGame(object sender, EventArgs e)
         {
-            _model.NewGame();
-            _timer.Start();
+            //_model.NewGame();
+            //_timer.Start();
         }
 
         /// <summary>
@@ -111,10 +98,11 @@ namespace RoboChase
         /// </summary>
         private async void ViewModel_LoadGame(object sender, System.EventArgs e)
         {
-            Boolean restartTimer = _timer.IsEnabled;
+            //Boolean restartTimer = _timer.IsEnabled;
 
-            _timer.Stop();
+            //_timer.Stop();
 
+            /*
             try
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog(); // dialógusablak
@@ -125,7 +113,7 @@ namespace RoboChase
                     // játék betöltése
                     await _model.LoadGameAsync(openFileDialog.FileName);
 
-                    _timer.Start();
+                    //_timer.Start();
                 }
             }
             catch (SudokuDataException)
@@ -133,8 +121,9 @@ namespace RoboChase
                 MessageBox.Show("A fájl betöltése sikertelen!", "Sudoku", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (restartTimer) // ha szükséges, elindítjuk az időzítőt
-                _timer.Start();
+            //if (restartTimer) // ha szükséges, elindítjuk az időzítőt
+                //_timer.Start();
+            */
         }
 
         /// <summary>
@@ -142,10 +131,11 @@ namespace RoboChase
         /// </summary>
         private async void ViewModel_SaveGame(object sender, EventArgs e)
         {
-            Boolean restartTimer = _timer.IsEnabled;
+            //Boolean restartTimer = _timer.IsEnabled;
 
-            _timer.Stop();
+            //_timer.Stop();
 
+            /*
             try
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog(); // dialógablak
@@ -169,8 +159,10 @@ namespace RoboChase
                 MessageBox.Show("A fájl mentése sikertelen!", "Sudoku", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (restartTimer) // ha szükséges, elindítjuk az időzítőt
-                _timer.Start();
+            //if (restartTimer) // ha szükséges, elindítjuk az időzítőt
+                //_timer.Start();
+                */
+
         }
 
         /// <summary>
@@ -188,10 +180,11 @@ namespace RoboChase
         /// <summary>
         /// Játék végének eseménykezelője.
         /// </summary>
-        private void Model_GameOver(object sender, SudokuEventArgs e)
+        private void Model_GameOver(object sender, EventArgs/*SodukoEventArgs*/ e)
         {
-            _timer.Stop();
+            //_timer.Stop();
 
+            /*
             if (e.IsWon) // győzelemtől függő üzenet megjelenítése
             {
                 MessageBox.Show("Gratulálok, győztél!" + Environment.NewLine +
@@ -208,6 +201,8 @@ namespace RoboChase
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Asterisk);
             }
+
+            */
         }
 
         #endregion

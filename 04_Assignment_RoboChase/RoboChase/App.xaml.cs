@@ -51,10 +51,7 @@ namespace RoboChase
 
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            //_model.AdvanceTime();
-        }
+       
 
         #endregion
 
@@ -97,8 +94,6 @@ namespace RoboChase
             _viewModel.LoadDone();
 
         }
-
-
         private async void ViewModel_SaveGame(object sender, EventArgs e)
         {
             _viewModel.LoadEnabled = "False";

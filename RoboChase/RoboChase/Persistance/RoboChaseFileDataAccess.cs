@@ -7,39 +7,39 @@ using RoboChase.Model;
 
 namespace RoboChase.Persistance
 {
-    public class RoboChaseFileDataAccess : IRoboChaseDataModel
+    public class RoboChaseFileDataAccess : IRoboChaseData
     {
-        public RoboChaseInfo Load(String path)
+        public async Task<RoboChaseInfo> LoadAsync(String path)
         {
             try
 
             {
-                using (StreamReader reader = new StreamReader(path)) // fájl megnyitása
+                using (StreamReader reader = new StreamReader(path))
                 {
                     
-                    String line = reader.ReadLine();
+                    String line = await reader.ReadLineAsync();
                     int size = Int32.Parse(line);
 
-                    line = reader.ReadLine();
+                    line = await reader.ReadLineAsync();
                     Position RobotPozition = new Position(Int32.Parse(line.Split(" ")[0]), Int32.Parse(line.Split(" ")[1]));
 
-                    line = reader.ReadLine();
+                    line = await reader.ReadLineAsync();
                     RobotDirection RobotDir = (RobotDirection)(Int32.Parse(line));
 
-                    line = reader.ReadLine();
+                    line = await reader.ReadLineAsync();
                     FieldType fieldTypeOnRobot = (FieldType)Int32.Parse(line);
 
-                    line = reader.ReadLine();
+                    line = await reader.ReadLineAsync();
                     ulong time = Convert.ToUInt64(line);
 
-                    line = reader.ReadLine();
+                    line = await reader.ReadLineAsync();
                     int crazyTime = Int32.Parse(line);
 
                     RoboChaseInfo table = new RoboChaseInfo(size, RobotPozition, time, RobotDir, fieldTypeOnRobot, crazyTime);
 
                     for (Int32 i = 0; i < size; i++)
                     {
-                        line = reader.ReadLine();
+                        line = await reader.ReadLineAsync();
                         var numbers = line.Split(' ');
 
                         for (Int32 j = 0; j < size; j++)
@@ -52,37 +52,38 @@ namespace RoboChase.Persistance
             }
             catch (Exception e)
             {
-                throw new InvalidOperationException();
+                throw new FileLoadException();
             }
         }
 
-        public void Save(String path, RoboChaseInfo gameInfo)
+        public async Task<bool> SaveAsync(String path, RoboChaseInfo gameInfo)
         {
             try
             {
                 using (StreamWriter writer = new StreamWriter(path)) 
                 {
-                    writer.WriteLine(gameInfo.size); 
-                    writer.WriteLine(gameInfo.robot.X + " " + gameInfo.robot.Y);
-                    writer.WriteLine((int)gameInfo.robotDir);
-                    writer.WriteLine((int)gameInfo.fieldTypeOnRobot);
-                    writer.WriteLine(gameInfo.time);
-                    writer.WriteLine(gameInfo.timeLeftUntilCrazy);
+                    await writer.WriteLineAsync(gameInfo.size.ToString()); 
+                    await writer.WriteLineAsync(gameInfo.robot.X + " " + gameInfo.robot.Y);
+                    await writer.WriteLineAsync(((int)gameInfo.robotDir).ToString());
+                    await writer.WriteLineAsync(((int)gameInfo.fieldTypeOnRobot).ToString());
+                    await writer.WriteLineAsync(gameInfo.time.ToString());
+                    await writer.WriteLineAsync(gameInfo.timeLeftUntilCrazy.ToString());
 
                     for (Int32 i = 0; i < gameInfo.size; i++)
                     {
                         for (Int32 j = 0; j < gameInfo.size; j++)
                         {
-                            writer.Write((int)gameInfo.board[i, j] + " "); // kiírjuk az értékeket
+                            await writer.WriteAsync((int)gameInfo.board[i, j] + " "); // kiírjuk az értékeket
                         }
-                        writer.WriteLine();
+                        await writer.WriteLineAsync();
                     }
                 }
             }
             catch
             {
-                throw new InvalidOperationException("There was an error saving your game!");
+                return false;
             }
+            return true;
         }
     }
 

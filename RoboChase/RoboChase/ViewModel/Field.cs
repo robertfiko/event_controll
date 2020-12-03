@@ -1,34 +1,14 @@
 ﻿using System;
+using RoboChase.Persistance;
 
 namespace RoboChase.ViewModel
 {
-    /// <summary>
-    /// Sudoku játékmező típusa.
-    /// </summary>
+
     public class Field : ViewModelBase
     {
-        private Boolean _isLocked;
         private String _text;
+        private String _imgsrc;
 
-        /// <summary>
-        /// Zároltság lekérdezése, vagy beállítása.
-        /// </summary>
-        public Boolean IsLocked 
-        {
-            get { return _isLocked; }
-            set 
-            {
-                if (_isLocked != value)
-                {
-                    _isLocked = value;
-                    OnPropertyChanged();
-                }
-            } 
-        }
-
-        /// <summary>
-        /// Felirat lekérdezése, vagy beállítása.
-        /// </summary>
         public String Text 
         {
             get { return _text; }
@@ -42,24 +22,39 @@ namespace RoboChase.ViewModel
             } 
         }
 
-        /// <summary>
-        /// Vízszintes koordináta lekérdezése, vagy beállítása.
-        /// </summary>
-        public Int32 X { get; set; }
+        public String ImgSrc
+        {
+            get { return _imgsrc; }
+            set
+            {
+                if (_imgsrc != value)
+                {
+                    _imgsrc = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
-        /// <summary>
-        /// Függőleges koordináta lekérdezése, vagy beállítása.
-        /// </summary>
+
+        public Int32 X { get; set; }
         public Int32 Y { get; set; }
 
-        /// <summary>
-        /// Sorszám lekérdezése.
-        /// </summary>
+        public Position Position
+        {
+            get { return new Position(X,Y); }
+            set
+            {
+                if (!value.Equals(new Position(X,Y)))
+                {
+                    X = value.X;
+                    Y = value.Y;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public Int32 Number { get; set; }
 
-        /// <summary>
-        /// Lépés parancs lekérdezése, vagy beállítása.
-        /// </summary>
         public DelegateCommand StepCommand { get; set; }
     }
 }

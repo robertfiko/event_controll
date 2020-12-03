@@ -7,9 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-    <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="Converter" />
-    </Window.Resources>
+
+    
 
     <Grid>
 
@@ -25,8 +24,8 @@
                 <MenuItem Header="Play" Command="{Binding PlayCommand}" IsEnabled="{Binding PlayEnabled}" />
                 <MenuItem Header="Pause" Command="{Binding PauseCommand}" IsEnabled="{Binding PauseEnabled}" />
                 <Separator/>
-                <MenuItem Header="Save" Command="{Binding SaveCommand}" />
-                <MenuItem Header="Load" Command="{Binding LoadCommand}" />
+                <MenuItem Header="Save" Command="{Binding SaveGameCommand}"  IsEnabled="{Binding SaveEnabled}" />
+                <MenuItem Header="Load" Command="{Binding LoadGameCommand}"  IsEnabled="{Binding LoadEnabled}" />
             </MenuItem>
         </Menu>
 
@@ -38,7 +37,10 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Command="{Binding StepCommand}"  Content="{Binding Text}" Focusable="False" RenderTransformOrigin="0.5, 0.5" FontSize="10" FontWeight="Bold">
+                    <Button Command="{Binding StepCommand}" CommandParameter="{Binding Number}"  Focusable="False" RenderTransformOrigin="0.5, 0.5" FontSize="10" FontWeight="Bold">
+                        <Button.Background>
+                            <ImageBrush ImageSource="{Binding ImgSrc}"/>
+                        </Button.Background>
                         <Button.RenderTransform>
                             <ScaleTransform ScaleX="1" ScaleY="1" />
                         </Button.RenderTransform>
@@ -46,8 +48,12 @@
                             <Style>
                                 <Setter Property="Grid.Row" Value="{Binding X}" />
                                 <Setter Property="Grid.Column" Value="{Binding Y}" />
+
+                                
                             </Style>
+                           
                         </Button.Style>
+                       
                     </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
@@ -63,13 +69,11 @@
             <StatusBarItem>
                 <TextBlock Text="{Binding GameTime}" />
             </StatusBarItem>
-            <Separator Visibility="{Binding Path=CurrentGameStatus, Converter={StaticResource Converter}}" />
+            
             <StatusBarItem>
                 <TextBlock Text="{Binding CurrentGameStatus}" />
             </StatusBarItem>
-            <StatusBarItem>
-                <TextBlock Text="{Binding BoardSize}" />
-            </StatusBarItem>
+           
            
             <StatusBarItem />
         </StatusBar>

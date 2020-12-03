@@ -9,7 +9,7 @@ using System.Windows;
 using RoboChase.Model;
 using RoboChase.ViewModel;
 using RoboChase.View;
-
+using Microsoft.Win32;
 
 namespace RoboChase
 {
@@ -38,8 +38,6 @@ namespace RoboChase
         private void App_Startup(object sender, StartupEventArgs e)
         {
             _model = new RoboChaseModel();
-            _model.OnGameOver += new EventHandler</*SudokuEventArgs*/EventArgs>(Model_GameOver);
-            //_model.newGame();
 
             
             _viewModel = new RoboChaseViewModel(_model);
@@ -47,10 +45,8 @@ namespace RoboChase
             _viewModel.LoadGame += new EventHandler(ViewModel_LoadGame);
             _viewModel.SaveGame += new EventHandler(ViewModel_SaveGame);
 
-            // nézet létrehozása
             _view = new MainWindow();
             _view.DataContext = _viewModel;
-            _view.Closing += new System.ComponentModel.CancelEventHandler(View_Closing); // eseménykezelés a bezáráshoz
             _view.Show();
 
         }
@@ -62,148 +58,84 @@ namespace RoboChase
 
         #endregion
 
-        #region View event handlers
 
-        private void View_Closing(object sender, EventArgs e)
-        {
-            //Boolean restartTimer = _timer.IsEnabled;
-
-            //_timer.Stop();
-
-            if (MessageBox.Show("Biztos, hogy ki akar lépni?", "Sudoku", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
-            {
-                //e.Cancel = true; // töröljük a bezárást
-
-               // if (restartTimer) // ha szükséges, elindítjuk az időzítőt
-               //     _timer.Start();
-            }
-        }
-
-        #endregion
+        
 
         #region ViewModel event handlers
-
-        /// <summary>
-        /// Új játék indításának eseménykezelője.
-        /// </summary>
-        private void ViewModel_NewGame(object sender, EventArgs e)
-        {
-            //_model.NewGame();
-            //_timer.Start();
-        }
-
-        /// <summary>
-        /// Játék betöltésének eseménykezelője.
-        /// </summary>
         private async void ViewModel_LoadGame(object sender, System.EventArgs e)
         {
-            //Boolean restartTimer = _timer.IsEnabled;
-
-            //_timer.Stop();
-
-            /*
+            string filePath = string.Empty;
+            
             try
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog(); // dialógusablak
-                openFileDialog.Title = "Sudoku tábla betöltése";
-                openFileDialog.Filter = "Sudoku tábla|*.stl";
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "CRAZY files (*.crazy)|*.crazy";
+                openFileDialog.RestoreDirectory = true;
+                openFileDialog.Title = "Load Robo Chase Files";
                 if (openFileDialog.ShowDialog() == true)
                 {
-                    // játék betöltése
-                    await _model.LoadGameAsync(openFileDialog.FileName);
+                    await _model.loadFromFileAsync(openFileDialog.FileName);
 
-                    //_timer.Start();
+                    filePath = openFileDialog.FileName;
+
+                    _viewModel.LoadEnabled = "False";
+                    _viewModel.SaveEnabled = "False";
+                    _viewModel.PlayEnabled = "True";
+                    _viewModel.PauseEnabled = "False";
+
+                    _viewModel.CurrentGameStatus = "Game has loaded. Press play to continue";
+
                 }
             }
-            catch (SudokuDataException)
+            catch (Exception)
             {
                 MessageBox.Show("A fájl betöltése sikertelen!", "Sudoku", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
-            //if (restartTimer) // ha szükséges, elindítjuk az időzítőt
-                //_timer.Start();
-            */
+            _viewModel.LoadDone();
+
         }
 
-        /// <summary>
-        /// Játék mentésének eseménykezelője.
-        /// </summary>
+
         private async void ViewModel_SaveGame(object sender, EventArgs e)
         {
-            //Boolean restartTimer = _timer.IsEnabled;
+            _viewModel.LoadEnabled = "False";
+            _viewModel.SaveEnabled = "False";
+            _viewModel.PlayEnabled = "True";
+            _viewModel.PauseEnabled = "False";
 
-            //_timer.Stop();
-
-            /*
             try
             {
-                SaveFileDialog saveFileDialog = new SaveFileDialog(); // dialógablak
-                saveFileDialog.Title = "Sudoku tábla betöltése";
-                saveFileDialog.Filter = "Sudoku tábla|*.stl";
-                if (saveFileDialog.ShowDialog() == true)
+                SaveFileDialog dialog = new SaveFileDialog(); 
+                dialog.Filter = "Crazy files (*.crazy)|*.crazy";
+                dialog.DefaultExt = "crazy*";
+                dialog.AddExtension = true;
+                if (dialog.ShowDialog() == true)
                 {
-                    try
+                    if (!await _model.saveGameAsync(dialog.FileName))
                     {
-                        // játéktábla mentése
-                        await _model.SaveGameAsync(saveFileDialog.FileName);
-                    }
-                    catch (SudokuDataException)
-                    {
-                        MessageBox.Show("Játék mentése sikertelen!" + Environment.NewLine + "Hibás az elérési út, vagy a könyvtár nem írható.", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Cannot save file!!" + Environment.NewLine + "Hibás az elérési út, vagy a könyvtár nem írható.", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
                     }
                 }
             }
             catch
             {
-                MessageBox.Show("A fájl mentése sikertelen!", "Sudoku", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Cannot save file!", "RoboChase", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            //if (restartTimer) // ha szükséges, elindítjuk az időzítőt
-                //_timer.Start();
-                */
+            MessageBox.Show("Successfull Save!", "RoboChase", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
 
-        /// <summary>
-        /// Játékból való kilépés eseménykezelője.
-        /// </summary>
+       
         private void ViewModel_ExitGame(object sender, System.EventArgs e)
         {
-            _view.Close(); // ablak bezárása
+            _view.Close();
         }
 
         #endregion
 
-        #region Model event handlers
-
-        /// <summary>
-        /// Játék végének eseménykezelője.
-        /// </summary>
-        private void Model_GameOver(object sender, EventArgs/*SodukoEventArgs*/ e)
-        {
-            //_timer.Stop();
-
-            /*
-            if (e.IsWon) // győzelemtől függő üzenet megjelenítése
-            {
-                MessageBox.Show("Gratulálok, győztél!" + Environment.NewLine +
-                                "Összesen " + e.GameStepCount + " lépést tettél meg és " +
-                                TimeSpan.FromSeconds(e.GameTime).ToString("g") + " ideig játszottál.",
-                                "Sudoku játék",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Asterisk);
-            }
-            else
-            {
-                MessageBox.Show("Sajnálom, vesztettél, lejárt az idő!",
-                                "Sudoku játék",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Asterisk);
-            }
-
-            */
-        }
-
-        #endregion
     }
 }

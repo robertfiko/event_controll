@@ -6,9 +6,9 @@ using RoboChase.Model;
 
 namespace RoboChase.Persistance
 {
-    public interface IRoboChaseDataModel
+    public interface IRoboChaseData
     {
-        RoboChaseInfo Load(String path);
-        void Save(String path, RoboChaseInfo info);
+        Task<RoboChaseInfo> LoadAsync(String path);
+        Task<bool> SaveAsync(String path, RoboChaseInfo info);
     }
 }

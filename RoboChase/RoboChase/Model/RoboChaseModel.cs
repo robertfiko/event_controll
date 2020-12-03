@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Timers;
 
 using RoboChase.Persistance;
@@ -10,7 +11,7 @@ namespace RoboChase.Model
         private RoboChaseInfo gameInfo;
         private int magnetPos;
         private System.Timers.Timer timer;
-        private IRoboChaseDataModel persistance;
+        private IRoboChaseData persistance;
         private bool gameIsOver;
 
         public event EventHandler<EventArgs> refreshBoard;
@@ -83,7 +84,6 @@ namespace RoboChase.Model
                 Position prevPostionOfRobot = new Position(gameInfo.robot.X, gameInfo.robot.Y);
                 FieldType robotPrev = gameInfo.fieldTypeOnRobot;
                 getBoard()[prevPostionOfRobot.X, prevPostionOfRobot.Y] = robotPrev;
-                //DORefreshField(gameInfo.robot);
 
                 //Robot put-down
                 oneStepRobot();
@@ -96,7 +96,6 @@ namespace RoboChase.Model
                 else
                 {
                     gameInfo.fieldTypeOnRobot = getBoard()[gameInfo.robot.X, gameInfo.robot.Y];
-                    //getBoard()[gameInfo.robot.X, gameInfo.robot.Y] = FieldType.ROBOT;
                     DORefreshField(gameInfo.robot);
                 }
 
@@ -248,20 +247,23 @@ namespace RoboChase.Model
 
         #region Save & Load
 
-        public void saveGame(string path)
+        public async Task<bool> saveGameAsync(string path)
         {
-
             if (gameInfo == null)
-                throw new InvalidOperationException("No data access is provided.");
+                return false;
 
-             persistance.Save(path, gameInfo);
+            try { await persistance.SaveAsync(path, gameInfo); }
+            catch (Exception e) { return false;  }
+            return true;
         }
 
-        public void loadFromFile(string path)
+        public async Task<RoboChaseInfo> loadFromFileAsync(string path)
         {
-            RoboChaseInfo info = persistance.Load(path);
+            RoboChaseInfo info = await persistance.LoadAsync(path);
             newGame(info.size, info);
             pause();
+
+            return info;
         }
         #endregion
 

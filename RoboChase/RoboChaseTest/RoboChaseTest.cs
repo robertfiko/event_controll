@@ -19,7 +19,14 @@ namespace RoboChase.Test
         [TestInitialize]
         public void Initialize()
         {
-            _mockedTable = new RoboChaseInfo(5, new Position(1,2), 0);
+            int size = 11;
+            Position robotpos = new Position(8, 7);
+            ulong time = 0;
+            RobotDirection robotdir = RobotDirection.DOWN;
+            FieldType fieldOnBot = FieldType.NO_WALL;
+            int timeleftcrazy = 8;
+
+            _mockedTable = new RoboChaseInfo(size, robotpos, time, robotdir, fieldOnBot, timeleftcrazy);
             _mock = new Mock<IRoboChaseData>();
             _mock.Setup(mock => mock.LoadAsync(It.IsAny<String>()))
                         .Returns(() => Task.FromResult(_mockedTable));
@@ -27,7 +34,32 @@ namespace RoboChase.Test
             _model = new RoboChaseModel(_mock.Object);
         }
 
-        
+        [TestMethod]
+        public async Task LoadCheck()
+        {
+            _model.newGame(5);
+            Assert.AreEqual(_model.getSize(), 5);
+
+            RoboChaseInfo gameInfo = await _model.loadFromFileAsync(String.Empty);
+            _model.newGame(gameInfo.size, gameInfo);
+
+            _mock.Verify(dataAccess => dataAccess.LoadAsync(String.Empty), Times.Once());
+
+            Assert.AreEqual(_model.getRobotPos(), gameInfo.robot);
+            Assert.AreEqual(_model.getSize(), 11);
+            Assert.AreEqual(gameInfo.size, 11);
+            Assert.AreEqual(gameInfo.time, (ulong)0);
+            Assert.AreEqual(_model.getTime(), 0);
+
+
+            for (int i = 0; i < 10; i++)
+            {
+                int prev = _model.getTime();
+                _model.AdvanceTime(this, new System.EventArgs());
+                if (_model.isInGame()) Assert.IsTrue(prev < _model.getTime());
+
+            }
+        }
 
         [TestMethod]
         public void ConstructorCheck()

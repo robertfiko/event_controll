@@ -31,6 +31,17 @@ namespace RoboChase.Model
             timer.Elapsed += new ElapsedEventHandler(AdvanceTime);
         }
 
+        public RoboChaseModel(IRoboChaseData p)
+        {
+            gameInfo = null;
+            magnetPos = -1;
+            timer = new System.Timers.Timer(1000);
+            gameIsOver = false;
+
+            persistance = p;
+            timer.Elapsed += new ElapsedEventHandler(AdvanceTime);
+        }
+
 
         #region Getters & Setters
         public Position getRobotPos()

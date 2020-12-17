@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="View\brick.png" />
+    <None Remove="View\cobble.png" />
+    <None Remove="View\magnet.png" />
+    <None Remove="View\robot.png" />
+    <None Remove="View\stone.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\brick.png" />
+    <Resource Include="View\cobble.png" />
+    <Resource Include="View\magnet.png" />
+    <Resource Include="View\robot.png" />
+    <Resource Include="View\stone.png" />
+  </ItemGroup>
+
+</Project>

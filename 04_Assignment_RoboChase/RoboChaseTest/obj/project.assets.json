@@ -6206,11 +6206,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChaseTest\\RoboChaseTest.csproj",
+      "projectUniqueName": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChaseTest\\RoboChaseTest.csproj",
       "projectName": "RoboChaseTest",
-      "projectPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChaseTest\\RoboChaseTest.csproj",
+      "projectPath": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChaseTest\\RoboChaseTest.csproj",
       "packagesPath": "C:\\Users\\Fikó Róbert\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChaseTest\\obj\\",
+      "outputPath": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChaseTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Fikó Róbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6227,8 +6227,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj": {
-              "projectPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj"
+            "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj": {
+              "projectPath": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj"
             }
           }
         }

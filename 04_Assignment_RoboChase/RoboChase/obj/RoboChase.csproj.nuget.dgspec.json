@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj": {}
+    "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj": {
+    "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj",
+        "projectUniqueName": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj",
         "projectName": "RoboChase",
-        "projectPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj",
+        "projectPath": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\RoboChase.csproj",
         "packagesPath": "C:\\Users\\Fikó Róbert\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\obj\\",
+        "outputPath": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChase\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Fikó Róbert\\AppData\\Roaming\\NuGet\\NuGet.Config",

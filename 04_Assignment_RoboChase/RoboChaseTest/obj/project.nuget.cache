@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i9B4AouSRvmAP0B+FHOB2/H1ba3Ypqm8c8+DXARR8A+d4KPhUJOYy0x8Y+MBWvSTXSDI8HHe6N1Inm3YIAKILQ==",
+  "dgSpecHash": "6/qrLdVZyIucv8nCJTNwnpAEsUlgJCcPsnHwdHJDjtqaNm/JXvb0rhx4HfJFPSCqtcNmjQ3mSlNSmjvaWU0LrQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Fikó Róbert\\source\\repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChaseTest\\RoboChaseTest.csproj",
+  "projectFilePath": "C:\\Users\\Fikó Róbert\\Source\\Repos\\robertfiko\\event_controll\\04_Assignment_RoboChase\\RoboChaseTest\\RoboChaseTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Fikó Róbert\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\Fikó Róbert\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",

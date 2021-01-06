@@ -1,10 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\03_Assignment_CrazyBot",
     "\\04_Assignment_RoboChase",
     "\\10_ImageDownloader",
     "\\12_PingPong"
   ],
-  "SelectedNode": "\\04_Assignment_RoboChase\\RoboChase.sln",
+  "SelectedNode": "\\03_Assignment_CrazyBot\\CrazyBot.sln",
   "PreviewInSolutionExplorer": false
 }

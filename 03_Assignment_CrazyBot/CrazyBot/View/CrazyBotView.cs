@@ -396,8 +396,7 @@ namespace CrazyBot.View
 
 
 
+
         #endregion
-
-
     }
 }

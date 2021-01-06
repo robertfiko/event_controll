@@ -13,7 +13,8 @@ namespace Roham.ViewModel
 
         #region Fields
 
-        private RoboChaseModel _model;
+        private Roham
+            Model _model;
 
         #endregion
 
